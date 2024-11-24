@@ -11,9 +11,12 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Palanquin+Dark:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Mountains+of+Christmas:wght@400;700&family=Oleo+Script+Swash+Caps:wght@400;700&family=Palanquin+Dark:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Mountains+of+Christmas:wght@400;700&family=Oleo+Script+Swash+Caps:wght@400;700&family=Palanquin+Dark:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -185,22 +188,22 @@
         const snowflakeSymbols = ['❄', '❅', '❆'];
 
         function createSnowflakes() {
-            const snowflakeCount = 4;
+                const snowflakeCount = 3; // Уменьшаем количество снежинок (было 4)
 
-            for (let i = 0; i < snowflakeCount; i++) {
-                const snowflake = document.createElement('div');
-                snowflake.className = 'snowflake';
-                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+                for (let i = 0; i < snowflakeCount; i++) {
+                    const snowflake = document.createElement('div');
+                    snowflake.className = 'snowflake';
+                    snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
 
-                const leftPosition = Math.random() * 80;
-                snowflake.style.left = `${leftPosition}vw`;
+                    const leftPosition = Math.random() * 100;
+                    snowflake.style.left = `${leftPosition}vw`;
 
-                const duration = Math.random() * 1 + 1;
-                snowflake.style.animationDuration = `${duration}s`;
+                    const duration = Math.random() * 2 + 2; // Увеличиваем длительность анимации (было * 1 + 1)
+                    snowflake.style.animationDuration = `${duration}s`;
 
-                document.body.appendChild(snowflake);
+                    document.body.appendChild(snowflake);
+                }
             }
-        }
 
         createSnowflakes();
         setInterval(createSnowflakes, 15000);

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weihnachtswünsche für Viki</title>
+    <link rel="stylesheet" href="snowflake.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Palanquin+Dark:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: "Lato", sans-serif;
+            text-align: center;
+            color: #ffffff;
+            background: url('gfdgfd.png') no-repeat center center fixed;
+            background-size: cover;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: "Oleo Script Swash Caps", serif;
+            margin-top: 20px;
+            font-size: 3.5rem;
+            color: #ffffff;
+        }
+
+        p {
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #e63946;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #d62839;
+        }
+
+        #wish {
+            font-size: 1.2rem;
+            margin-top: 20px;
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%;
+            color: #fff;
+            font-size: 2em;
+            font-family: Arial, sans-serif;
+            user-select: none;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateX(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(100px) rotate(360deg);
+                opacity: 0.5;
+                top: 100%;
+            }
+        }
+
+        .pretzel {
+            position: absolute;
+            top: 50px;
+            right: 20px;
+            width: 150px;
+            height: auto;
+        }
+
+        /* --- Общая адаптация для мобильных устройств --- */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+                margin-top: 10px;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+            }
+
+            #wish {
+                font-size: 1rem;
+            }
+
+            .pretzel {
+                width: 120px;
+                top: 30px;
+                right: 10px;
+            }
+        }
+
+        /* --- iPhone 14 Pro --- */
+        @media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            button {
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+
+            .pretzel {
+                width: 100px;
+                top: 20px;
+                right: 5px;
+            }
+
+            #wish {
+                font-size: 1rem;
+            }
+        }
+
+        /* --- iPhone 16 Pro Max --- */
+        @media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+            h1 {
+                font-size: 2.8rem;
+                margin-top: 15px;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            button {
+                padding: 10px 18px;
+                font-size: 1rem;
+            }
+
+            .pretzel {
+                width: 110px;
+                top: 25px;
+                right: 10px;
+            }
+
+            #wish {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Weihnachtswünsche für Viki</h1>
+    <p>Натисни на кнопку, чтобы загадать желание!</p>
+    <button onclick="generateWish()">Holen Sie sich einen Wunsch!</button>
+    <p id="wish">...</p>
+
+    <img src="Screenshow.png" alt="Pretzel" class="pretzel">
+
+    <script>
+        const snowflakeSymbols = ['❄', '❅', '❆'];
+
+        function createSnowflakes() {
+            const snowflakeCount = 4;
+
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+
+                const leftPosition = Math.random() * 80;
+                snowflake.style.left = `${leftPosition}vw`;
+
+                const duration = Math.random() * 1 + 1;
+                snowflake.style.animationDuration = `${duration}s`;
+
+                document.body.appendChild(snowflake);
+            }
+        }
+
+        createSnowflakes();
+        setInterval(createSnowflakes, 15000);
+
+        const wishes = [
+            "Liebe Vika, möge dein Herz zu Weihnachten mit Wärme, Liebe und Freude erfüllt sein!",
+            "Frohe Weihnachten! Möge dein Leben immer voller Glück und magischer Momente sein.",
+            "Weihnachten wäre ohne deine strahlende Energie und dein Lächeln nicht komplett. Danke, dass du immer da bist.",
+            "Ich wünsche dir leuchtende Lichter, süße Überraschungen und unvergessliche Erinnerungen an diesem Weihnachten.",
+            "Frohe Weihnachten, Möge das kommende Jahr dir nur das Beste bringen, denn du verdienst es!"
+        ];
+
+        function generateWish() {
+            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
+            document.getElementById('wish').textContent = randomWish;
+        }
+    </script>
+</body>
+
+</html>

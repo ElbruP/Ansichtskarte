@@ -182,10 +182,18 @@
                 font-size: 1.1rem;
             }
         }
+
+        
     </style>
 </head>
 
 <body>
+<!-- Preloader -->
+<div id="preloader">
+    <div class="preloader-snowflake">❄</div>
+    <p class="preloader-text">Frohe Weihnachten...</p>
+</div>
+
     <h1>Weihnachtswünsche für Viki</h1>
     <p>Натисни на кнопку, щоб отримати побажання!</p>
     <button onclick="generateWish()">Отримати бажання!</button>
@@ -233,8 +241,19 @@
             document.getElementById('wish').textContent = randomWish;
         }
     </script>
+
+    <script>
+        window.onload = function () {
+                setTimeout(() => {
+                    const preloader = document.getElementById('preloader');
+                    preloader.style.transition = 'opacity 1s ease';
+                    preloader.style.opacity = '0';
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                    }, 1000); // Видалити після завершення анімації
+                }, 2000); // Прелоадер буде відображатися 2 секунди
+            };
+    </script>
 </body>
 
 </html>
-
-       

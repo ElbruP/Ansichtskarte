@@ -48,7 +48,7 @@
     border-radius: 20px;
     padding: 15px 30px;
     font-size: 1.2rem;
-    font-weight: bold; 
+    font-weight: bold; /* Сделать текст жирным */
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -89,14 +89,17 @@
         }
 
         .pretzel {
-            position: absolute;
-            top: 50px;
-            right: 20px;
-            width: 150px;
-            height: auto;
+           display: none;
         }
 
- 
+
+@media (max-width: 768px) {
+    .pretzel {
+        display: block;
+    }
+}
+
+        /* --- Общая адаптация для мобильных устройств --- */
         @media (max-width: 768px) {
             h1 {
                 font-size: 2.5rem;
@@ -181,7 +184,7 @@
 <body>
     <h1>Weihnachtswünsche für Viki</h1>
     <p>Натисни на кнопку, щоб отримати побажання!</p>
-    <button onclick="generateWish()">Отримати побажання!</button>
+    <button onclick="generateWish()">Отримати бажання!</button>
     <p id="wish">...</p>
 
     <img src="Screenshow.png" alt="Pretzel" class="pretzel">

@@ -119,12 +119,16 @@
                 font-size: 1rem;
             }
 
-            .pretzel {
-                width: 120px;
-                top: 30px;
-                right: 10px;
-            }
-        }
+            @media (max-width: 768px) {
+    .pretzel {
+        display: block;
+        position: absolute;
+        width: 80px; 
+        top: 36px; 
+        right: 10px; 
+    }
+}
+
 
         /* --- iPhone 14 Pro --- */
         @media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {

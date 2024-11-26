@@ -48,7 +48,7 @@
     border-radius: 20px;
     padding: 15px 30px;
     font-size: 1.2rem;
-    font-weight: bold; /* Сделать текст жирным */
+    font-weight: bold; 
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -118,6 +118,7 @@
             #wish {
                 font-size: 1rem;
             }
+        }
 
             @media (max-width: 768px) {
     .pretzel {
@@ -200,27 +201,34 @@
     <p id="wish">...</p>
 
     <img src="Screenshow.png" alt="Pretzel" class="pretzel">
+     
+<div class="overlay" id="overlay" onclick="closePhoto()"></div>
+<img src="" alt="Photo" class="photo-modal" id="photoModal">
+
+<button class="photo-nav prev" id="prevPhoto" onclick="changePhoto(-1)">❮</button>
+<button class="photo-nav next" id="nextPhoto" onclick="changePhoto(1)">❯</button>
+
 
     <script>
-        const snowflakeSymbols = ['❄', '❅', '❆'];
+       const snowflakeSymbols = ['❄', '❅', '❆'];
 
         function createSnowflakes() {
-                const snowflakeCount = 3; 
+            const snowflakeCount = 2;
 
-                for (let i = 0; i < snowflakeCount; i++) {
-                    const snowflake = document.createElement('div');
-                    snowflake.className = 'snowflake';
-                    snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
+            for (let i = 0; i < snowflakeCount; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.textContent = snowflakeSymbols[Math.floor(Math.random() * snowflakeSymbols.length)];
 
-                    const leftPosition = Math.random() * 100;
-                    snowflake.style.left = `${leftPosition}vw`;
+                const leftPosition = Math.random() * 80;
+                snowflake.style.left = `${leftPosition}vw`;
 
-                    const duration = Math.random() * 2 + 2; 
-                    snowflake.style.animationDuration = `${duration}s`;
+                const duration = Math.random() * 2 + 3;
+                snowflake.style.animationDuration = `${duration}s`;
 
-                    document.body.appendChild(snowflake);
-                }
+                document.body.appendChild(snowflake);
             }
+        }
 
         createSnowflakes();
         setInterval(createSnowflakes, 15000);
@@ -236,22 +244,88 @@
             "Danke, dass du diese Welt mit deinem Lachen und deiner Herzlichkeit bereicherst."
         ];
 
-        function generateWish() {
-            const randomWish = wishes[Math.floor(Math.random() * wishes.length)];
-            document.getElementById('wish').textContent = randomWish;
-        }
-    </script>
+        let currentWishIndex = 0; 
+        let currentPhotoIndex = 0; 
 
+        const photos = [
+            "5346042361832140409.jpg",
+            "5346042361832140411.jpg",
+            "5346042361832140410 (1).jpg",
+            "5346042361832140412.jpg",
+            "5346042361832140475.jpg",
+            "5346042361832140413.jpg",
+            "5346042361832140553.jpg",
+            "5341510634463944786.jpg"
+            
+        ];
+
+        function generateWish() {
+            const wishElement = document.getElementById('wish');
+
+            if (currentWishIndex < wishes.length) {
+                wishElement.textContent = wishes[currentWishIndex];
+                currentWishIndex++; 
+            } else {
+                showPhotoMenu();
+            }
+        }
+
+        function showPhotoMenu() {
+            const overlay = document.getElementById('overlay');
+            const photoModal = document.getElementById('photoModal');
+
+            overlay.style.display = 'block'; 
+            photoModal.src = photos[currentPhotoIndex]; 
+            photoModal.style.display = 'block';
+
+            document.getElementById('prevPhoto').style.display = 'block'; 
+            document.getElementById('nextPhoto').style.display = 'block';
+
+            setTimeout(() => {
+                photoModal.classList.add('visible');
+            }, 50);
+        }
+
+        function closePhoto() {
+            const overlay = document.getElementById('overlay');
+            const photoModal = document.getElementById('photoModal');
+
+            overlay.style.display = 'none'; 
+            photoModal.classList.remove('visible'); 
+            setTimeout(() => {
+                photoModal.style.display = 'none'; 
+            }, 500); 
+            document.getElementById('prevPhoto').style.display = 'none'; 
+            document.getElementById('nextPhoto').style.display = 'none';
+        }
+
+        function changePhoto(direction) {
+            const photoModal = document.getElementById('photoModal');
+
+            photoModal.classList.remove('visible');
+
+            setTimeout(() => {
+                currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
+
+                photoModal.src = photos[currentPhotoIndex];
+
+                photoModal.classList.add('visible');
+            }, 500); 
+        }
+
+
+    </script>
+ 
     <script>
         window.onload = function () {
-                setTimeout(() => {
+                setTimeout(() => { //загрузочний екран //
                     const preloader = document.getElementById('preloader');
                     preloader.style.transition = 'opacity 1s ease';
                     preloader.style.opacity = '0';
                     setTimeout(() => {
                         preloader.style.display = 'none';
-                    }, 1000); // Видалити після завершення анімації
-                }, 2000); // Прелоадер буде відображатися 2 секунди
+                    }, 1000); 
+                }, 2000); 
             };
     </script>
 </body>

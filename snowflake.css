@@ -282,4 +282,7 @@
     margin-top: 20px;
     transition: opacity 0.5s ease;
 }
- 
+ .photo-modal {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}

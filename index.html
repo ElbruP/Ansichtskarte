@@ -389,25 +389,25 @@
         document.getElementById('nextPhoto').style.display = 'none';
     }
 
-    function changePhoto(direction) {
-            const photoModal = document.getElementById('photoModal');
-            const finalMessage = document.getElementById('finalMessage');
+   function changePhoto(direction) {
+    const photoModal = document.getElementById('photoModal');
+    const finalMessage = document.getElementById('finalMessage');
 
-            photoModal.style.transition = 'opacity 0.5s ease';
-            photoModal.style.opacity = 0;
+    photoModal.style.transition = 'opacity 0.5s ease';
+    photoModal.style.opacity = 0;
 
-            setTimeout(() => {
-                currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
+    setTimeout(() => {
+        currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
 
-                if (currentPhotoIndex === 0 && direction === 1) {
-                    displayFinalMessage();
-                } else {
-                   
-                    photoModal.src = photos[currentPhotoIndex];
-                    photoModal.style.opacity = 1; 
-                }
-            }, 500); 
+        if (currentPhotoIndex === 0 && direction === 1) {
+            displayFinalMessage();
+        } else {
+            photoModal.src = photos[currentPhotoIndex];
+            photoModal.style.opacity = 1; 
         }
+    }, 500); 
+}
+
 
 
     function displayFinalMessage() {

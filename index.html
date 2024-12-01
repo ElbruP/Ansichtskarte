@@ -376,6 +376,11 @@
         }, 50);
     }
 
+    photoModal.addEventListener('transitionend', () => {
+            // Логика смены фотографии
+        });
+
+
     function closePhoto() {
         const overlay = document.getElementById('overlay');
         const photoModal = document.getElementById('photoModal');
@@ -389,23 +394,25 @@
         document.getElementById('nextPhoto').style.display = 'none';
     }
 
+    
+
     function changePhoto(direction) {
-        const photoModal = document.getElementById('photoModal');
-        const finalMessage = document.getElementById('finalMessage');
+            const photoModal = document.getElementById('photoModal');
+            const finalMessage = document.getElementById('finalMessage');
 
-        photoModal.classList.remove('visible');
+            photoModal.classList.remove('visible');
 
-        setTimeout(() => {
-            currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
+            setTimeout(() => {
+                currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
 
-            if (currentPhotoIndex === 0 && direction === 1) {
-                displayFinalMessage();
-            } else {
-                photoModal.src = photos[currentPhotoIndex];
-                photoModal.classList.add('visible');
-            }
-        }, 500);
-    }
+                const newPhoto = new Image();
+                newPhoto.src = photos[currentPhotoIndex];
+                newPhoto.onload = () => {
+                    photoModal.src = newPhoto.src;
+                    photoModal.classList.add('visible');
+                };
+            }, 500);
+        }
 
     function displayFinalMessage() {
             const finalMessage = document.getElementById('finalMessage');
@@ -462,15 +469,15 @@
     }
 
     @media (max-width: 768px) {
-        /* Для экранов шириной менее 768px */
-        .final-message {
-            font-size: 2rem; /* Уменьшаем размер шрифта */
-        }
-        .final-message::after {
-            content: "Danke, dass du\A du bist"; /* Автоматический перенос */
-            white-space: pre-wrap; /* Обеспечивает сохранение переноса строки */
-        }
+    .final-message {
+        font-size: 2rem;
+        line-height: 1.2;
+        word-wrap: break-word; /* Обеспечивает перенос длинных слов */
+        white-space: normal; /* Позволяет тексту переноситься */
+    }
 }
+
+    
 
 </style>
  

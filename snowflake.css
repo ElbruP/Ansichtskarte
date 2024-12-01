@@ -1,4 +1,4 @@
-  .snowflake {
+ .snowflake {
      color: #fff;
      font-size: 1em;
      font-family: Arial;
@@ -136,6 +136,16 @@
  }
 
  .photo-modal {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.photo-modal.visible {
+    opacity: 1;
+}
+
+
+ .photo-modal {
      position: fixed;
      top: 50%;
      left: 50%;
@@ -173,6 +183,12 @@
      background-color: rgba(255, 255, 255, 0.5);
      color: black;
  }
+
+
+.photo-modal {
+    position: fixed;
+    z-index: 1000;
+}
 
  .photo-modal {
      max-width: 80%;

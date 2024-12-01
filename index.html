@@ -376,11 +376,6 @@
         }, 50);
     }
 
-    photoModal.addEventListener('transitionend', () => {
-            // Логика смены фотографии
-        });
-
-
     function closePhoto() {
         const overlay = document.getElementById('overlay');
         const photoModal = document.getElementById('photoModal');
@@ -394,25 +389,26 @@
         document.getElementById('nextPhoto').style.display = 'none';
     }
 
-    
-
     function changePhoto(direction) {
             const photoModal = document.getElementById('photoModal');
             const finalMessage = document.getElementById('finalMessage');
 
-            photoModal.classList.remove('visible');
+            photoModal.style.transition = 'opacity 0.5s ease';
+            photoModal.style.opacity = 0;
 
             setTimeout(() => {
                 currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
 
-                const newPhoto = new Image();
-                newPhoto.src = photos[currentPhotoIndex];
-                newPhoto.onload = () => {
-                    photoModal.src = newPhoto.src;
-                    photoModal.classList.add('visible');
-                };
-            }, 500);
+                if (currentPhotoIndex === 0 && direction === 1) {
+                    displayFinalMessage();
+                } else {
+                   
+                    photoModal.src = photos[currentPhotoIndex];
+                    photoModal.style.opacity = 1; 
+                }
+            }, 500); 
         }
+
 
     function displayFinalMessage() {
             const finalMessage = document.getElementById('finalMessage');
@@ -463,8 +459,8 @@
     text-align: center;
     padding: 20px 40px;
     border-radius: 10px;
-     z-index: 9999; /* Устанавливает элемент выше всех остальных */
-        line-height: 1.5; /* Для лучшей читаемости */
+     z-index: 9999; 
+        line-height: 1.5; 
         word-wrap: break-word;
     }
 
@@ -472,8 +468,8 @@
     .final-message {
         font-size: 2rem;
         line-height: 1.2;
-        word-wrap: break-word; /* Обеспечивает перенос длинных слов */
-        white-space: normal; /* Позволяет тексту переноситься */
+        word-wrap: break-word; 
+        white-space: normal; 
     }
 }
 

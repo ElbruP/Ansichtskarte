@@ -360,21 +360,56 @@
 
     let currentPhotoIndex = 0;
 
+    // Предзагрузка всех изображений
+        const preloadedImages = photos.map((src) => {
+            const img = new Image();
+            img.src = src;
+            return img;
+        });
+
+        function changePhoto(direction) {
+            const photoModal = document.getElementById('photoModal');
+            const finalMessage = document.getElementById('finalMessage');
+
+            // Убираем видимость текущей фотографии с плавным затуханием
+            photoModal.style.transition = 'opacity 0.5s ease';
+            photoModal.style.opacity = 0;
+
+            setTimeout(() => {
+                // Обновляем индекс изображения
+                currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
+
+                if (currentPhotoIndex === 0 && direction === 1) {
+                    // Если мы находимся в конце списка и идём вперёд — показываем финальное сообщение
+                    displayFinalMessage();
+                } else {
+                    // Устанавливаем новое изображение из предзагруженного массива
+                    photoModal.src = preloadedImages[currentPhotoIndex].src;
+
+                    // Плавно показываем новое изображение
+                    photoModal.style.opacity = 1;
+                }
+            }, 500); // Длительность совпадает с CSS transition
+        }
+
+
     function showPhotoMenu() {
-        const overlay = document.getElementById('overlay');
-        const photoModal = document.getElementById('photoModal');
+            const overlay = document.getElementById('overlay');
+            const photoModal = document.getElementById('photoModal');
 
-        overlay.style.display = 'block';
-        photoModal.src = photos[currentPhotoIndex];
-        photoModal.style.display = 'block';
+            overlay.style.display = 'block';
+            photoModal.src = preloadedImages[currentPhotoIndex].src; // Используем предзагруженное изображение
+            photoModal.style.display = 'block';
 
-        document.getElementById('prevPhoto').style.display = 'block';
-        document.getElementById('nextPhoto').style.display = 'block';
+            document.getElementById('prevPhoto').style.display = 'block';
+            document.getElementById('nextPhoto').style.display = 'block';
 
-        setTimeout(() => {
-            photoModal.classList.add('visible');
-        }, 50);
-    }
+            setTimeout(() => {
+                photoModal.classList.add('visible');
+                photoModal.style.opacity = 1; // Плавное появление первого изображения
+            }, 50);
+        }
+
 
     function closePhoto() {
         const overlay = document.getElementById('overlay');
@@ -389,25 +424,25 @@
         document.getElementById('nextPhoto').style.display = 'none';
     }
 
-   function changePhoto(direction) {
-    const photoModal = document.getElementById('photoModal');
-    const finalMessage = document.getElementById('finalMessage');
+    function changePhoto(direction) {
+            const photoModal = document.getElementById('photoModal');
+            const finalMessage = document.getElementById('finalMessage');
 
-    photoModal.style.transition = 'opacity 0.5s ease';
-    photoModal.style.opacity = 0;
+            photoModal.style.transition = 'opacity 0.5s ease';
+            photoModal.style.opacity = 0;
 
-    setTimeout(() => {
-        currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
+            setTimeout(() => {
+                currentPhotoIndex = (currentPhotoIndex + direction + photos.length) % photos.length;
 
-        if (currentPhotoIndex === 0 && direction === 1) {
-            displayFinalMessage();
-        } else {
-            photoModal.src = photos[currentPhotoIndex];
-            photoModal.style.opacity = 1; 
+                if (currentPhotoIndex === 0 && direction === 1) {
+                    displayFinalMessage();
+                } else {
+                   
+                    photoModal.src = photos[currentPhotoIndex];
+                    photoModal.style.opacity = 1; 
+                }
+            }, 500); 
         }
-    }, 500); 
-}
-
 
 
     function displayFinalMessage() {

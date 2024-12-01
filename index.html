@@ -287,7 +287,6 @@
 <div class="overlay" id="overlay" onclick="closePhoto()"></div>
 <img src="" alt="Photo" class="photo-modal" id="photoModal">
 <div id="finalMessage" class="final-message" style="display: none;">Danke, dass du <br> du bist</div>
-    
 
 <button class="photo-nav prev" id="prevPhoto" onclick="changePhoto(-1)">❮</button>
 <button class="photo-nav next" id="nextPhoto" onclick="changePhoto(1)">❯</button>
@@ -418,6 +417,8 @@
             prevPhoto.style.display = 'none';
             nextPhoto.style.display = 'none';
 
+        finalMessage.innerHTML = "Danke, dass du<br>du bist";
+
             finalMessage.style.display = 'block';
             finalMessage.style.opacity = 0;
             finalMessage.style.transition = 'opacity 2s ease';
@@ -455,7 +456,20 @@
     text-align: center;
     padding: 20px 40px;
     border-radius: 10px;
-    z-index: 9999; 
+     z-index: 9999; /* Устанавливает элемент выше всех остальных */
+        line-height: 1.5; /* Для лучшей читаемости */
+        word-wrap: break-word;
+    }
+
+    @media (max-width: 768px) {
+        /* Для экранов шириной менее 768px */
+        .final-message {
+            font-size: 2rem; /* Уменьшаем размер шрифта */
+        }
+        .final-message::after {
+            content: "Danke, dass du\A du bist"; /* Автоматический перенос */
+            white-space: pre-wrap; /* Обеспечивает сохранение переноса строки */
+        }
 }
 
 </style>

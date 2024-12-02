@@ -499,16 +499,38 @@
         word-wrap: break-word;
     }
 
-    @media (max-width: 768px) {
+   /* Общая адаптация для экранов шириной менее 768px */
+@media (max-width: 768px) {
     .final-message {
         font-size: 2rem;
         line-height: 1.2;
-        word-wrap: break-word; 
-        white-space: normal; 
+        word-wrap: break-word;
+        white-space: normal;
+        text-align: center;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 430px) {
+    .final-message {
+        font-size: 1.8rem;
+        line-height: 1.1;
+        padding: 5px;
+    }
+}
+
+/* Специфическая адаптация для iPhone 16 Pro Max (430px ширина, 932px высота, Retina экран) */
+@media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .final-message {
+        font-size: 1.6rem;
+        line-height: 1.2;
+        padding: 5px;
+        text-align: center;
     }
 }
 
     
+
 
 </style>
  

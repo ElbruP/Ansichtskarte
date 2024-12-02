@@ -499,37 +499,57 @@
         word-wrap: break-word;
     }
 
-   /* Общая адаптация для экранов шириной менее 768px */
-@media (max-width: 768px) {
-    .final-message {
-        font-size: 2rem;
-        line-height: 1.2;
-        word-wrap: break-word;
-        white-space: normal;
-        text-align: center;
-        padding: 10px;
-    }
-}
-
+/* Общий стиль для iPhone, если ширина экрана меньше 430px */
 @media (max-width: 430px) {
     .final-message {
         font-size: 1.8rem;
-        line-height: 1.1;
-        padding: 5px;
-    }
-}
-
-/* Специфическая адаптация для iPhone 16 Pro Max (430px ширина, 932px высота, Retina экран) */
-@media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
-    .final-message {
-        font-size: 1.6rem;
-        line-height: 1.2;
-        padding: 5px;
+        line-height: 1.4;
+        word-wrap: break-word;
+        white-space: pre-line;
         text-align: center;
     }
 }
 
-    
+/* iPhone 16 Pro Max (430px x 932px, Retina) */
+@media (max-width: 430px) and (min-device-height: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .final-message {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-align: center;
+        white-space: pre-line;
+        padding: 5px;
+    }
+}
+
+/* iPhone 14 Pro и 15 Pro (393px x 852px, Retina) */
+@media (max-width: 393px) and (min-device-height: 852px) and (-webkit-device-pixel-ratio: 3) {
+    .final-message {
+        font-size: 1.6rem;
+        line-height: 1.4;
+        text-align: center;
+        white-space: pre-line;
+    }
+}
+
+/* iPhone 11 и XR (414px x 896px) */
+@media (max-width: 414px) and (min-device-height: 896px) {
+    .final-message {
+        font-size: 1.8rem;
+        line-height: 1.3;
+        text-align: center;
+        white-space: pre-line;
+    }
+}
+
+/* iPhone 8 и SE (375px x 667px) */
+@media (max-width: 375px) and (min-device-height: 667px) {
+    .final-message {
+        font-size: 1.6rem;
+        line-height: 1.3;
+        text-align: center;
+        white-space: pre-line;
+    }
+}
 
 
 </style>

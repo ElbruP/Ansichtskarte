@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weihnachtswünsche</title>
     <link rel="stylesheet" href="snowflake.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900&family=Palanquin+Dark:wght@400;500;600;700&display=swap"
@@ -228,8 +228,8 @@
 
     .pretzel {
         width: 110px;
-        top: 27px;
-        right: 10px;
+        top: 32px;
+        right: 15px;
     }
 
     #wish {
@@ -255,8 +255,8 @@
 
             .pretzel {
                 width: 110px;
-                top: 29px;
-                right: 10px;
+                top: 32px;
+                right: 14px;
             }
 
             #wish {
@@ -286,7 +286,9 @@
 
 <div class="overlay" id="overlay" onclick="closePhoto()"></div>
 <img src="" alt="Photo" class="photo-modal" id="photoModal">
-<div id="finalMessage" class="final-message" style="display: none;">Danke, dass du <br> du bist</div>
+<div id="finalMessage" class="final-message" style="display: none;">
+    Danke, dass es<br>dich gibt
+</div>
 
 <button class="photo-nav prev" id="prevPhoto" onclick="changePhoto(-1)">❮</button>
 <button class="photo-nav next" id="nextPhoto" onclick="changePhoto(1)">❯</button>
@@ -455,7 +457,7 @@
             prevPhoto.style.display = 'none';
             nextPhoto.style.display = 'none';
 
-        finalMessage.innerHTML = "Danke, dass <br> du du bist";
+        finalMessage.innerHTML = "Danke, dass es dich gibt";
 
             finalMessage.style.display = 'block';
             finalMessage.style.opacity = 0;

@@ -286,8 +286,9 @@
 
 <div class="overlay" id="overlay" onclick="closePhoto()"></div>
 <img src="" alt="Photo" class="photo-modal" id="photoModal">
-<div id="finalMessage" class="final-message" style="display: none;"> <span>Danke, dass es</span><br><span>dich
-
+<div id="finalMessage" class="final-message" style="display: none;">
+    Danke, dass es<br>dich gibt
+</div>
 
 <button class="photo-nav prev" id="prevPhoto" onclick="changePhoto(-1)">❮</button>
 <button class="photo-nav next" id="nextPhoto" onclick="changePhoto(1)">❯</button>
@@ -483,77 +484,62 @@
 </script>
 
 <style>
-    .final-message {
+ .final-message {
     font-family: "Oleo Script Swash Caps", serif;
     position: fixed; 
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    font-size: 3rem;
+    font-size: 5vw; /* Относительный размер шрифта */
     font-weight: bold;
     color: white;
     text-align: center;
-    padding: 20px 40px;
+    padding: 2vw 4vw;
     border-radius: 10px;
     z-index: 9999;
-    line-height: 1.2; 
-    white-space: normal; 
+    line-height: 1.2;
+    white-space: normal;
     word-wrap: break-word;
     overflow-wrap: break-word;
-    max-width: 90%; 
+    max-width: 90%;
 }
 
-/* iPhone 16 Pro Max, 15 Pro Max и устройства шириной около 430px */
-@media (max-width: 430px) {
+/* iPhone 10, 11 (1125x2436, @3x) */
+@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
     .final-message {
-        font-size: 2.4rem; /* Уменьшение шрифта */
-        line-height: 1.4;  /* Оптимальный интервал */
-        max-width: 85%;    /* Ограничение ширины контейнера */
-    }
-}
-
-/* iPhone 14 Pro, 13 Pro и устройства шириной около 390px */
-@media (max-width: 393px) {
-    .final-message {
-        font-size: 2.3rem; 
-        line-height: 1.3;  
-        max-width: 85%;    
-    }
-}
-
-/* iPhone 12 Mini, SE (2020) и устройства шириной около 375px */
-@media (max-width: 375px) {
-    .final-message {
-        font-size: 2.2rem;
+        font-size: 4.8vw;
         line-height: 1.3;
-        max-width: 80%; 
+        max-width: 85%;
     }
 }
 
-/* iPhone SE (2016) и устройства шириной около 320px */
-@media (max-width: 320px) {
+/* iPhone 14 Pro (1179x2556, @3x) */
+@media only screen and (min-device-width: 393px) and (max-device-width: 852px) and (-webkit-device-pixel-ratio: 3) {
     .final-message {
-        font-size: 1.9rem;
-        line-height: 1.2;
-        max-width: 75%; 
+        font-size: 4.5vw;
+        line-height: 1.3;
+        max-width: 85%;
     }
 }
 
-    @media (max-width: 414px) and (min-device-height: 896px) {
-        .final-message {
-            font-size: 2.8rem;
-            line-height: 1.3;
-            max-width: 85%;
-        }
+/* iPhone 15 Pro (1179x2556, @3x) */
+@media only screen and (min-device-width: 393px) and (max-device-width: 852px) and (-webkit-device-pixel-ratio: 3) {
+    .final-message {
+        font-size: 4.5vw;
+        line-height: 1.3;
+        max-width: 85%;
     }
+}
 
-    @media (max-width: 375px) and (min-device-height: 667px) {
-        .final-message {
-            font-size: 2.3rem;
-            line-height: 1.2;
-            max-width: 80%;
-        }
+/* iPhone 16 Pro Max (1290x2796, @3x) */
+@media only screen and (min-device-width: 430px) and (max-device-width: 932px) and (-webkit-device-pixel-ratio: 3) {
+    .final-message {
+        font-size: 4.2vw;
+        line-height: 1.3;
+        max-width: 85%;
     }
+}
+
 
 
 </style>
@@ -575,3 +561,4 @@
 </body>
 
 </html>
+   
